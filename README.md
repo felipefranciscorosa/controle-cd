@@ -1,20 +1,26 @@
 # controle-cd
-checklist
-1  - Criar o repositório no GitHub com a estrutura do Gitflow, ou seja, branches main e develop.
-2  - Usar componentes de algum framework CSS (Bootstrap, Materialize ou outro).
-3  - Apresentar as telas com layout responsivo usando ou não algum framework CSS.
-4  - Construir páginas web com o conceito de componentes. 
-5  - Criar o layout da aplicação com componentes, ou seja, o cabeçalho e rodapé precisam ser componentes.
-6  - Usar pelo menos dois tipos de data-binding (Interpolation, Property Binding, Event Binding e Two Way Data Binding).
-7  - Passar dados via hierarquia de componentes, ou seja, usando @Input ou @Output.
-8  - Mapear componentes à rotas no módulo de rotas.
-9  - Criar navegação entre páginas por meio de rotas.
-10 - Passar dados entre componentes que representam diferentes telas via parâmetros de rotas. 
-11 - Validar campos do formulário com REGEX e apresentar os erros.
-12 - Desabilitar o botão de submit enquanto o formulário está inválido.
-13 - Fazer requisições a API com tratamento da resposta com Promises ou Observables.
-14 - Cadastrar uma entidade no JSON Server.
-15 - Apresentar uma lista de dados com a diretiva estrutural ngFor.
-16 - Usar a diretiva ngIf
-17 - Formatar a apresentação de dados com Pipes.
-18 - Build e deploy da aplicação.
+
+# Protótipo
+
+[https://www.figma.com/file/a1VDbO1aNfZyulQPxT99OE/beleza-em-dia?node-id=3%3A80](https://www.figma.com/file/fD2zUuEzoyE0EDrdwQLHoq/Biblioteca-de-CDs?node-id=0%3A1)
+
+# Checklist
+
+- [x] Criar o repositório no GitHub com a estrutura do Gitflow, ou seja, branches main e develop.
+- [x] Usar componentes de algum framework CSS (Bootstrap, Materialize ou outro)
+- [x] Apresentar as telas com layout responsivo usando ou não algum framework CSS.
+- [x] Construir páginas web com o conceito de componentes.
+- [x] Criar o layout da aplicação com componentes, ou seja, o cabeçalho e rodapé precisam ser componentes.
+- [x] Usar pelo menos dois tipos de data-binding (Interpolation, Property Binding, Event Binding e Two Way Data Binding).
+- [x] Passar dados via hierarquia de componentes, ou seja, usando @Input ou @Output.
+- [x] Mapear componentes à rotas no módulo de rotas.
+- [x] Criar navegação entre páginas por meio de rotas.
+- [x] Passar dados entre componentes que representam diferentes telas via parâmetros de rotas.
+- [x] Validar campos do formulário com REGEX e apresentar os erros.
+- [x] Desabilitar o botão de submit enquanto o formulário está inválido.
+- [x] Fazer requisições a API com tratamento da resposta com Promises ou Observables.
+- [x] Cadastrar uma entidade usando uma API (JSON Server ou Firebase).
+- [x] Apresentar uma lista de dados com a diretiva estrutural ngFor.
+- [x] Usar a diretiva ngIf
+- [x] Formatar a apresentação de dados com Pipes.
+- [x] Build e deploy da aplicação.
