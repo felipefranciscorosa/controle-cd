@@ -2,7 +2,7 @@
 
 # Protótipo
 
-[https://www.figma.com/file/a1VDbO1aNfZyulQPxT99OE/beleza-em-dia?node-id=3%3A80](https://www.figma.com/file/fD2zUuEzoyE0EDrdwQLHoq/Biblioteca-de-CDs?node-id=0%3A1)
+https://www.figma.com/file/fD2zUuEzoyE0EDrdwQLHoq/Biblioteca-de-CDs?node-id=0%3A1
 
 # Checklist
 
