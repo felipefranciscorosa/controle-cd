@@ -23,6 +23,7 @@
               "projects/controle-cd-main/src/assets"
             ],
             "styles": [
+              "./node_modules/@angular/material/prebuilt-themes/purple-green.css",
               "projects/controle-cd-main/src/styles.css"
             ],
             "scripts": []
@@ -90,6 +91,7 @@
               "projects/controle-cd-main/src/assets"
             ],
             "styles": [
+              "./node_modules/@angular/material/prebuilt-themes/purple-green.css",
               "projects/controle-cd-main/src/styles.css"
             ],
             "scripts": []

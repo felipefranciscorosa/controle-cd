@@ -1,2 +1,53 @@
-<span>Primeiro App is running!</span>
-<app-second></app-second>
+<app-toolbar></app-toolbar>
+<span>Novo CD!</span>
+<form class="col s12" (ngSubmit)="onSubmit">
+  <div class="row">
+    <div class="input-field col s12">
+      <input id="input-album"
+             name="input-album"
+             type="text"
+             [(ngModel)]="this.cd.album"
+             >
+             <label for="album-input">Album</label>
+    </div>
+    <div class="input-field col s12">
+      <input id="input-artista"
+             name="input-artista"
+             type="text"
+             [(ngModel)]="this.cd.artista"
+             >
+             <label for="artista-input">Artista</label>
+    </div>
+    <div class="input-field col s12">
+      <input id="input-ano"
+             name="input-ano"
+             type="number"
+             [(ngModel)]="this.cd.ano"
+             >
+             <label for="ano-input">Ano</label>
+    </div>
+    <div class="input-field col s12">
+      <input id="input-estilo"
+             name="input-estilo"
+             type="text"
+             [(ngModel)]="this.cd.estilo"
+             >
+             <label for="estilo-input">Estilo</label>
+    </div>
+    <div class="input-field col s12">
+      <input id="input-numFaixas"
+             name="input-numFaixas"
+             type="number"
+             [(ngModel)]="this.cd.numFaixas"
+             >
+             <label for="numFaixas-input">Número de Faixas</label>
+    </div>
+  </div>
+  <button class="btn waves-effect waves-light amber darken-4"
+          type="submit"
+          >
+          Salvar
+          <i class="material icons right">send</i>
+        </button>
+</form>
+<app-footer></app-footer>
