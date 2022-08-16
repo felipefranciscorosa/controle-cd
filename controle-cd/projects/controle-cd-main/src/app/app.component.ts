@@ -18,6 +18,9 @@ export class AppComponent implements OnInit,AfterViewInit{
     this.cd = new Cd("","",0,"",0);
   }
   onSubmit(){
+
+  }
+  onSaveClick(){
     if(this.cd.artista!=""&&this.cd.album!=""){
       this.cds.push(this.cd);
       this.cd = new Cd("","",0,"",0);

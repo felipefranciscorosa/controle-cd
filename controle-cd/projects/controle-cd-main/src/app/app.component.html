@@ -44,10 +44,11 @@
     </div>
   </div>
   <button class="btn waves-effect waves-light amber darken-4"
-          type="submit"
+          type="button"
+          (click)="onSaveClick()"
           >
-          Salvar
-          <i class="material icons right">send</i>
+          <i class="material icons right">Salvar</i>
         </button>
 </form>
+<p>Album: {{this.cd.album}}</p>
 <app-footer></app-footer>
