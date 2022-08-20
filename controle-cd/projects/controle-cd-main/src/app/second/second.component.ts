@@ -1,4 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
+import { Cd } from '../model/cd';
 
 @Component({
   selector: 'app-second',
@@ -7,9 +9,15 @@ import { Component, OnInit } from '@angular/core';
 })
 export class SecondComponent implements OnInit {
 
-  constructor() { }
+  @Input() cds!: Array<Cd>;
+  @Output() notify = new EventEmitter();
+
+  constructor(private route: ActivatedRoute) { }
 
   ngOnInit(): void {
+    const routeParams = this.route.snapshot.paramMap;
+    const productIdFromRoute = Number(routeParams.get('cdAlbum'));
+
   }
 
 }

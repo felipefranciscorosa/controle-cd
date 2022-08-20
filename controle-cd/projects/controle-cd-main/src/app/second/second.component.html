@@ -1,1 +1,18 @@
-<p>second works!</p>
+<table>
+  <thead>
+    <tr>
+        <th>Album</th>
+        <th>Artista</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <div *ngFor="let cd of cds">
+    <tr>
+      <td>{{this.cd.album}}</td>
+      <td>{{this.cd.artista}}</td>
+    </tr>
+  </div>
+  </tbody>
+</table>
+<button type="button" (click)="notify.emit()">Notify</button>

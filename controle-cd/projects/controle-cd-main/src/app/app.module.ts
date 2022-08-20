@@ -9,19 +9,23 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {MatToolbarModule} from '@angular/material/toolbar';
 import {MatSidenavModule} from '@angular/material/sidenav';
 import { FormsModule } from '@angular/forms';
+import { AppRoutingModule } from './app-routing.module';
+import { FirstComponent } from './first/first.component';
 @NgModule({
   declarations: [
     AppComponent,
     SecondComponent,
     ToolbarComponent,
-    FooterComponent
+    FooterComponent,
+    FirstComponent
   ],
   imports: [
     BrowserModule,
     MatToolbarModule,
     MatSidenavModule,
     FormsModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    AppRoutingModule
   ],
   providers: [],
   bootstrap: [AppComponent]

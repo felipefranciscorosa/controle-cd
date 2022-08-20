@@ -6,27 +6,10 @@ import { Cd } from './model/cd';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
-export class AppComponent implements OnInit,AfterViewInit{
-  cd!: Cd;
-  cds!: Array<Cd>;
-  title = 'Primeiro App';
+export class AppComponent {
 
   constructor(){
 
   }
-  ngOnInit(): void {
-    this.cd = new Cd("","",0,"",0);
-  }
-  onSubmit(){
 
-  }
-  onSaveClick(){
-    if(this.cd.artista!=""&&this.cd.album!=""){
-      this.cds.push(this.cd);
-      this.cd = new Cd("","",0,"",0);
-    }
-  }
-  ngAfterViewInit(): void {
-
-  }
 }
