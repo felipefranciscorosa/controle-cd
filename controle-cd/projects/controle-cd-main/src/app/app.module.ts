@@ -11,13 +11,15 @@ import {MatSidenavModule} from '@angular/material/sidenav';
 import { FormsModule } from '@angular/forms';
 import { AppRoutingModule } from './app-routing.module';
 import { FirstComponent } from './first/first.component';
+import { ThirdComponent } from './third/third.component';
 @NgModule({
   declarations: [
     AppComponent,
     SecondComponent,
     ToolbarComponent,
     FooterComponent,
-    FirstComponent
+    FirstComponent,
+    ThirdComponent
   ],
   imports: [
     BrowserModule,

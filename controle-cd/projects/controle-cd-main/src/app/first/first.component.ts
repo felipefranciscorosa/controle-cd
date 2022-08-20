@@ -15,6 +15,7 @@ export class FirstComponent implements OnInit,AfterViewInit{
 
   }
   ngOnInit(): void {
+    this.cds = [new Cd("Dois","Legião Urbana",1992,"Rock",21),new Cd("Acústico MTV","Capital Inicial",1997,"Rock",18)]
     this.cd = new Cd("","",0,"",0);
   }
   onSubmit(){
