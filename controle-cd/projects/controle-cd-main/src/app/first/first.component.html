@@ -11,12 +11,12 @@
              required
              >
              <label for="album-input">Album</label>
-             <div class="red-text" *ngIf="album.invalid || album.untouched">
-              Por favor, informe o album.
+             <div class="red-text" *ngIf="album.invalid && album.touched">
+              Por favor, informe o album(4-100 Caracteres).
             </div>
-            <!--<div class="red-text" *ngIf="album.errors?.['required'] && album.touched">
+            <div class="red-text" *ngIf="album.errors?.['required'] && album.touched">
               Por favor, o album é obrigatório.
-            </div>*/-->
+            </div>
     </div>
     <div class="input-field col s12">
       <input id="input-artista"
@@ -29,12 +29,12 @@
              required
              >
              <label for="artista-input">Artista</label>
-             <div class="red-text" *ngIf="artista.invalid || artista.untouched">
-              Por favor, informe o artista.
+             <div class="red-text" *ngIf="artista.invalid && artista.touched">
+              Por favor, informe o artista (4-100 Caracteres).
             </div>
-            <!--<div class="red-text" *ngIf="artista.errors?.['required'] && artista.touched">
+            <div class="red-text" *ngIf="artista.errors?.['required'] && artista.touched">
               Por favor, o artista é obrigatório.
-            </div>-->
+            </div>
     </div>
     <div class="input-field col s12">
       <input id="input-ano"
@@ -48,12 +48,12 @@
              required
              >
              <label for="ano-input">Ano</label>
-             <div class="red-text" *ngIf="ano.invalid || ano.untouched">
-              Por favor, informe o ano.
+             <div class="red-text" *ngIf="ano.invalid && ano.touched">
+              Por favor, informe o ano (1900-2100).
             </div>
-            <!--<div class="red-text" *ngIf="ano.errors?.['required'] && ano.touched">
+            <div class="red-text" *ngIf="ano.errors?.['required'] && ano.touched">
               Por favor, o ano é obrigatório.
-            </div>-->
+            </div>
     </div>
     <div class="input-field col s12">
       <input id="input-estilo"
@@ -66,12 +66,12 @@
              required
              >
              <label for="estilo-input">Estilo</label>
-             <div class="red-text" *ngIf="estilo.invalid || estilo.untouched">
-              Por favor, informe o estilo.
+             <div class="red-text" *ngIf="estilo.invalid && estilo.touched">
+              Por favor, informe o estilo (4-100 Caracteres).
             </div>
-            <!--<div class="red-text" *ngIf="estilo.errors?.['required'] && estilo.touched">
+            <div class="red-text" *ngIf="estilo.errors?.['required'] && estilo.touched">
               Por favor, o estilo é obrigatório.
-            </div>-->
+            </div>
     </div>
     <div class="input-field col s12">
       <input id="input-numFaixas"
@@ -85,12 +85,12 @@
              required
              >
              <label for="numFaixas-input">Número de Faixas</label>
-             <div class="red-text" *ngIf="faixas.invalid || faixas.untouched">
-              Por favor, informe  o número de faixas.
+             <div class="red-text" *ngIf="faixas.invalid && faixas.touched">
+              Por favor, informe  o número de faixas (3-100).
             </div>
-            <!--<div class="red-text" *ngIf="faixas.errors?.['required'] && faixas.touched">
+            <div class="red-text" *ngIf="faixas.errors?.['required'] && faixas.touched">
               Por favor, o número de faixas é obrigatório.
-            </div>-->
+            </div>
     </div>
   <button class="btn waves-effect waves-light amber darken-4"
           type="submit"
@@ -113,7 +113,7 @@
 
   <tbody>
     <tr *ngFor="let c of cds">
-      <td>{{ c.album | titlecase }}</td>
+      <td>{{ c.album }}</td>
       <td>{{ c.artista}}</td>
       <td class="right">
         <a

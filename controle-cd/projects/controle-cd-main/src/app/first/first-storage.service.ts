@@ -4,12 +4,14 @@ import { BehaviorSubject, Observable } from 'rxjs';
 
 import { Injectable } from '@angular/core';
 import { WebStorageUtil } from '../util/web-storage-util';
+import { Shared } from '../util/shared';
 
 @Injectable()
 export class CdStorageService {
   cds!: Cd[];
   private cdSource!: BehaviorSubject<number>;
   constructor() {
+    Shared.initializeWebStorage();
     this.cds = WebStorageUtil.get(Constants.CDS_KEY);
     this.cdSource = new BehaviorSubject<number>(this.cds.length);
   }
