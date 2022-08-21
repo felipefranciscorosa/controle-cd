@@ -13,7 +13,10 @@ export class Cd{
       this._numFaixas = numFaixas;
     }
 
-
+    public static clone(cd: Cd) {
+      let c: Cd = new Cd(cd.album, cd.artista, cd.ano, cd.estilo, cd.numFaixas);
+      return c;
+    }
   get album(){
       return this._album;
   }

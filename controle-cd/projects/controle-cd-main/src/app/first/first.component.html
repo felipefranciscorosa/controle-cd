@@ -1,57 +1,137 @@
 <span>Novo CD!</span>
-<form class="col s12" (ngSubmit)="onSubmit">
-  <div class="row">
+<form class="col s12" #form="ngForm" (submit)="onSubmit()">
     <div class="input-field col s12">
       <input id="input-album"
              name="input-album"
              type="text"
+             class="validate"
              [(ngModel)]="this.cd.album"
+             pattern=".{4,100}"
+             #album="ngModel"
+             required
              >
              <label for="album-input">Album</label>
+             <div class="red-text" *ngIf="album.invalid || album.untouched">
+              Por favor, informe o album.
+            </div>
+            <div class="red-text" *ngIf="album.errors?.['required'] && album.touched">
+              Por favor, o album é obrigatório.
+            </div>
     </div>
     <div class="input-field col s12">
       <input id="input-artista"
              name="input-artista"
              type="text"
+             class="validate"
              [(ngModel)]="this.cd.artista"
+             pattern=".{4,100}"
+             #artista="ngModel"
+             required
              >
              <label for="artista-input">Artista</label>
+             <div class="red-text" *ngIf="artista.invalid || artista.untouched">
+              Por favor, informe o artista.
+            </div>
+            <div class="red-text" *ngIf="artista.errors?.['required'] && artista.touched">
+              Por favor, o artista é obrigatório.
+            </div>
     </div>
     <div class="input-field col s12">
       <input id="input-ano"
              name="input-ano"
              type="number"
+             class="validate"
              [(ngModel)]="this.cd.ano"
+             #ano="ngModel"
+             min="1900"
+             max="2100"
+             required
              >
              <label for="ano-input">Ano</label>
+             <div class="red-text" *ngIf="ano.invalid || ano.untouched">
+              Por favor, informe o ano.
+            </div>
+            <div class="red-text" *ngIf="ano.errors?.['required'] && ano.touched">
+              Por favor, o ano é obrigatório.
+            </div>
     </div>
     <div class="input-field col s12">
       <input id="input-estilo"
              name="input-estilo"
              type="text"
+             class="validate"
              [(ngModel)]="this.cd.estilo"
+             pattern=".{4,100}"
+             #estilo="ngModel"
+             required
              >
              <label for="estilo-input">Estilo</label>
+             <div class="red-text" *ngIf="estilo.invalid || estilo.untouched">
+              Por favor, informe o estilo.
+            </div>
+            <div class="red-text" *ngIf="estilo.errors?.['required'] && estilo.touched">
+              Por favor, o estilo é obrigatório.
+            </div>
     </div>
     <div class="input-field col s12">
       <input id="input-numFaixas"
              name="input-numFaixas"
              type="number"
+             class="validate"
              [(ngModel)]="this.cd.numFaixas"
+             #faixas="ngModel"
+             min="3"
+             max="100"
+             required
              >
              <label for="numFaixas-input">Número de Faixas</label>
+             <div class="red-text" *ngIf="faixas.invalid || faixas.untouched">
+              Por favor, informe  o número de faixas.
+            </div>
+            <div class="red-text" *ngIf="faixas.errors?.['required'] && faixas.touched">
+              Por favor, o número de faixas é obrigatório.
+            </div>
     </div>
-  </div>
   <button class="btn waves-effect waves-light amber darken-4"
-          type="button"
-          (click)="onSaveClick()"
+          type="submit"
+          [disabled]="!form.valid"
           >
           <i class="material icons right">Salvar</i>
         </button>
 </form>
 <p>Album: {{this.cd.album}}</p>
-<app-second [cds]="cds" (notify)="onNotify()">
-</app-second>
+<h5>Cds cadastrados</h5>
+<!-- Tabela de Cds -->
+<table class="highlight" *ngIf="cds && cds!.length > 0">
+  <thead>
+    <tr>
+      <th>Album</th>
+      <th>Artista</th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <tr *ngFor="let c of cds">
+      <td>{{ c.album | titlecase }}</td>
+      <td>{{ c.artista}}</td>
+      <td class="right">
+        <a
+          ><i class="material-icons my-icon-size" (click)="onEdit(c)"
+            >edit</i
+          ></a
+        >
+        <a
+          ><i
+            class="material-icons my-icon-size"
+            (click)="onDelete(c.album)"
+            >delete</i
+          ></a
+        >
+      </td>
+    </tr>
+  </tbody>
+</table>
 <nav>
   <a routerLink="../third" routerLinkActive="active">Third Page</a>
 </nav>

@@ -1,5 +1,9 @@
-import { AfterViewInit, Component, OnInit } from '@angular/core';
+import { AfterViewInit, Component, OnInit, ViewChild } from '@angular/core';
 import { Cd } from '../model/cd';
+import { Constants } from '../util/constants';
+import { NgForm } from '@angular/forms';
+import { CdStorageService } from './first-storage.service';
+import { WebStorageUtil } from '../util/web-storage-util';
 
 @Component({
   selector: 'app-first',
@@ -7,25 +11,49 @@ import { Cd } from '../model/cd';
   styleUrls: ['./first.component.css']
 })
 export class FirstComponent implements OnInit,AfterViewInit{
+  @ViewChild('form') form!: NgForm;
+
   cd!: Cd;
-  cds!: Array<Cd>;
+  cds!: Cd[];
   title = 'Primeiro App';
 
-  constructor(){
+  constructor(private cdService: CdStorageService){
 
   }
   ngOnInit(): void {
-    this.cds = [new Cd("Dois","Legião Urbana",1992,"Rock",21),new Cd("Acústico MTV","Capital Inicial",1997,"Rock",18)]
     this.cd = new Cd("","",0,"",0);
+    this.cds = this.cdService.getCds();
   }
   onSubmit(){
-
-  }
-  onSaveClick(){
-    if(this.cd.artista!=""&&this.cd.album!=""){
-      this.cds.push(this.cd);
-      this.cd = new Cd("","",0,"",0);
+    if (!this.cdService.isExist(this.cd.album)) {
+      this.cdService.save(this.cd);
+    } else {
+      this.cdService.update(this.cd);
     }
+
+    this.form.reset();
+    this.cd = new Cd("","",0,"",0);
+
+    this.cds = this.cdService.getCds();
+
+    this.cdService.notifyTotalCds();
+  }
+  onEdit(cd: Cd) {
+    //this.user = user;
+    let clone = Cd.clone(cd);
+    this.cd = clone;
+  }
+  onDelete(album: string) {
+    let confirmation = window.confirm(
+      'Você tem certeza que deseja remover ' + album
+    );
+    if (!confirmation) {
+      return;
+    }
+    let response: boolean = this.cdService.delete(album);
+
+    this.cds = this.cdService.getCds();
+    this.cdService.notifyTotalCds();
   }
   ngAfterViewInit(): void {
 
