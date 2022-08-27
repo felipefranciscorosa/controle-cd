@@ -5,63 +5,66 @@ import { BehaviorSubject, Observable } from 'rxjs';
 import { Injectable } from '@angular/core';
 import { WebStorageUtil } from '../util/web-storage-util';
 import { Shared } from '../util/shared';
+import {CdPromisseService} from './../services/cd-promisse.service';
 
 @Injectable()
 export class CdStorageService {
   cds!: Cd[];
   private cdSource!: BehaviorSubject<number>;
-  constructor() {
-    Shared.initializeWebStorage();
-    this.cds = WebStorageUtil.get(Constants.CDS_KEY);
-    this.cdSource = new BehaviorSubject<number>(this.cds.length);
+  constructor(private cdPromisseService: CdPromisseService) {
+    this.cdPromisseService.get().then((value) =>{this.cds =<Cd[]>value})
+                          .catch((e) => {this.cds = [] });
+
   }
 
   save(cd: Cd) {
-    this.cds = WebStorageUtil.get(Constants.CDS_KEY);
     this.cds.push(cd);
-    WebStorageUtil.set(Constants.CDS_KEY, this.cds);
+    this.cdPromisseService.post(cd).then((value) =>{})
+    .catch((e) => {});
   }
 
   update(cd: Cd) {
-    this.cds = WebStorageUtil.get(Constants.CDS_KEY);
-    this.delete(cd.album);
-    this.save(cd);
+    this.cds = this.cds.filter((c) => {
+      return c.id?.valueOf() != cd.id?.valueOf();
+    });
+    this.cds.push(cd);
+    this.cdPromisseService.put(cd).then((value) =>{})
+    .catch((e) => {});
   }
 
-  delete(album: string): boolean {
-    this.cds = WebStorageUtil.get(Constants.CDS_KEY);
-    this.cds = this.cds.filter((c) => {
-      return c.album?.valueOf() != album?.valueOf();
-    });
-
-    WebStorageUtil.set(Constants.CDS_KEY, this.cds);
+  delete(cd: Cd): boolean {
+    this.cds = this.cds.filter((c) => {return c.id?.valueOf() != cd.id?.valueOf();});
+    this.cdPromisseService.delete(cd).then((value) =>{})
+                                     .catch((e) => {});
     return true;
   }
 
-  isExist(value: string): boolean {
-    this.cds = WebStorageUtil.get(Constants.CDS_KEY);
+  isExist(value: number): boolean {
     for (let c of this.cds) {
-      if (c.album?.valueOf() == value?.valueOf()) {
+      if (c.id?.valueOf() == value?.valueOf()) {
         return true;
       }
     }
     return false;
   }
 
-  getCds(): Cd[] {
-    this.cds = WebStorageUtil.get(Constants.CDS_KEY);
+  async getCds(): Promise<Cd[]> {
+    //this.cdPromisseService.get().then((value) =>{this.cds =<Cd[]>value
+    //                                            return this.cds;
+    //                                            })
+    //                      .catch((e) => {this.cds = []
+    //                                    return this.cds;
+    //                                    })
+    //                      ;
+    this.cds =  <Cd[]> await this.cdPromisseService.get();
     return this.cds;
   }
 
   notifyTotalCds() {
-    this.cdSource.next(this.getCds()?.length);
+    this.cdSource.next(this.cds.length);
     // if (this.getUsers()?.length > 1) {
     //   this.userSource.complete();
     // }
   }
 
-  asObservable(): Observable<number> {
-    return this.cdSource;
-    //return this.userSource.asObservable()
-  }
 }

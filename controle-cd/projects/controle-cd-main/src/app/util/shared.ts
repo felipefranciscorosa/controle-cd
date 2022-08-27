@@ -14,7 +14,7 @@ export class Shared {
     }
 
     //usuário definido na forma literal
-    let cd = new Cd("Dois", "Legião Urbana", 1997, "Rock", 17);
+    let cd = new Cd(1,"Dois", "Legião Urbana", 1997, "Rock", 17);
     let cds = [cd];
 
     localStorage.setItem(Constants.CDS_KEY, JSON.stringify(cds));

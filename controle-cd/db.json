@@ -1,0 +1,20 @@
+{
+  "cds": [
+    {
+      "id": 1,
+      "album": "Teste",
+      "artista": "Teste",
+      "ano": 2022,
+      "estilo": "Teste",
+      "numFaixas": 17
+    },
+    {
+      "id": 7,
+      "album": "Primeiros Erros",
+      "artista": "Capital Inicial",
+      "ano": 1995,
+      "estilo": "Rock",
+      "numFaixas": 25
+    }
+  ]
+}

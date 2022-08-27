@@ -102,7 +102,7 @@
 <p>Album: {{this.cd.album}}</p>
 <h5>Cds cadastrados</h5>
 <!-- Tabela de Cds -->
-<table class="highlight" *ngIf="cds && cds!.length > 0">
+<table class="highlight" *ngIf="getCds() && getCds()!.length > 0">
   <thead>
     <tr>
       <th>Album</th>
@@ -112,7 +112,7 @@
   </thead>
 
   <tbody>
-    <tr *ngFor="let c of cds">
+    <tr *ngFor="let c of getCds()">
       <td>{{ c.album }}</td>
       <td>{{ c.artista}}</td>
       <td class="right">
@@ -124,7 +124,7 @@
         <a
           ><i
             class="material-icons my-icon-size"
-            (click)="onDelete(c.album)"
+            (click)="onDelete(c)"
             >delete</i
           ></a
         >
