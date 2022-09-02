@@ -5,22 +5,20 @@ import { BehaviorSubject, Observable } from 'rxjs';
 import { Injectable } from '@angular/core';
 import { WebStorageUtil } from '../util/web-storage-util';
 import { Shared } from '../util/shared';
-import {CdPromisseService} from './../services/cd-promisse.service';
+import {CdObservableService} from './../services/cd-observable.service';
 
 @Injectable()
 export class CdStorageService {
   cds!: Cd[];
   private cdSource!: BehaviorSubject<number>;
-  constructor(private cdPromisseService: CdPromisseService) {
-    this.cdPromisseService.get().then((value) =>{this.cds =<Cd[]>value})
-                          .catch((e) => {this.cds = [] });
+  constructor(private cdObservableService: CdObservableService) {
+    this.cdObservableService.getAll().subscribe((value) =>{this.cds =<Cd[]>value});
 
   }
 
   save(cd: Cd) {
     this.cds.push(cd);
-    this.cdPromisseService.post(cd).then((value) =>{})
-    .catch((e) => {});
+    this.cdObservableService.post(cd).subscribe((value) =>{});
   }
 
   update(cd: Cd) {
@@ -28,14 +26,12 @@ export class CdStorageService {
       return c.id?.valueOf() != cd.id?.valueOf();
     });
     this.cds.push(cd);
-    this.cdPromisseService.put(cd).then((value) =>{})
-    .catch((e) => {});
+    this.cdObservableService.put(cd).subscribe((value) =>{});
   }
 
   delete(cd: Cd): boolean {
     this.cds = this.cds.filter((c) => {return c.id?.valueOf() != cd.id?.valueOf();});
-    this.cdPromisseService.delete(cd).then((value) =>{})
-                                     .catch((e) => {});
+    this.cdObservableService.delete(cd).subscribe((value) =>{});
     return true;
   }
 
@@ -56,7 +52,8 @@ export class CdStorageService {
     //                                    return this.cds;
     //                                    })
     //                      ;
-    this.cds =  <Cd[]> await this.cdPromisseService.get();
+    //await
+    this.cdObservableService.getAll().subscribe((value) =>{this.cds =<Cd[]>value});;
     return this.cds;
   }
 

@@ -99,7 +99,7 @@
           <i class="material icons right">Salvar</i>
         </button>
 </form>
-<p>Album: {{this.cd.album}}</p>
+<p>Album: {{this.cd.album|uppercase}}</p>
 <h5>Cds cadastrados</h5>
 <!-- Tabela de Cds -->
 <table class="highlight" *ngIf="getCds() && getCds()!.length > 0">
