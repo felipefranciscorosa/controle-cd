@@ -26,3 +26,4 @@ https://www.figma.com/file/fD2zUuEzoyE0EDrdwQLHoq/Biblioteca-de-CDs?node-id=0%3A
 - [x] Build e deploy da aplicação.
 
 Aplicação GHPages: https://felipefranciscorosa.github.io/controle-cd/
+=======
