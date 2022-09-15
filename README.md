@@ -24,3 +24,6 @@ https://www.figma.com/file/fD2zUuEzoyE0EDrdwQLHoq/Biblioteca-de-CDs?node-id=0%3A
 - [x] Usar a diretiva ngIf
 - [x] Formatar a apresentação de dados com Pipes.
 - [x] Build e deploy da aplicação.
+
+Aplicação GHPages: https://felipefranciscorosa.github.io/controle-cd/
+=======
